@@ -5,16 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Launchpad</title>
 <style>
-  /* CSS styles for buttons */
-  *{
+  * {
     scroll-behavior: smooth;
+    box-sizing: border-box;
   }
   body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: darkslategray;
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    color: #fff;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('photo.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(55px);
+    z-index: -1;
   }
   .launchpad {
     display: grid;
@@ -24,47 +36,49 @@
   }
   .launchpad-category {
     grid-column: 1 / -1;
-    font-size: 18px;
+    font-size: 1.25rem;
     margin-bottom: 10px;
-    padding-top: 5px;
+    padding: 5px;
     text-align: center;
-    color: azure;
+    color: #bbff00;
     font-weight: bold;
     text-decoration: underline;
   }
   .launchpad-button {
     width: 100%;
-    display: inline;
     height: 80px;
     border-radius: 50px;
-    background-color: #e1ebc6;
-    color: black;
+    display: inline;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffebeb;
     text-align: center;
     line-height: 80px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     overflow: hidden;
     white-space: nowrap;
-    word-break: break-all;
-    word-wrap: break-word;
     text-overflow: ellipsis;
     padding: 15px;
-    margin: 10px;
-  }
-  .header{
-    background-color: gray;
-    text-align: center;
-    align-self: center;
+    margin: 5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    font-weight: bold;
   }
   .launchpad-button:hover {
-    background-color: #485f07;
-    box-shadow: 5px 5px 5px aliceblue;
-    font-size: 1.9ch;
-    color: aliceblue;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    color: #bbff00;
+    font-weight: bolder;
+    font-size: larger;
   }
-
-  /* Responsive styles */
+  .header {
+    background-color: gray;
+    text-align: center;
+    padding: 10px;
+  }
   @media screen and (max-width: 768px) {
     .launchpad {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -72,16 +86,15 @@
     .launchpad-button {
       height: 60px;
       line-height: 60px;
-      font-size: 15px;
+      font-size: 0.9rem;
     }
   }
 </style>
 </head>
 <body>
 
-  <div  id="research">
-  <!-- Crypto Research -->
-  <div class="launchpad-category"><h3>Crypto Research</h3></div>
+<div id="research" class="launchpad-section">
+  <div class="launchpad-category">Crypto Research</div>
   <div class="launchpad-button" onclick="window.open('https://app.nansen.ai/')">Nansen</div>
   <div class="launchpad-button" onclick="window.open('https://platform.arkhamintelligence.com/')">Arkham</div>
   <div class="launchpad-button" onclick="window.open('https://messari.io/governor/proposal-tracker')">Messari Governance Tracker</div>
@@ -101,9 +114,8 @@
   <div class="launchpad-button" onclick="window.open('https://honeypot.is/')">Honeypot Detector</div>
 </div>
 
-  <div id="chain">
-  <!-- Chain Scanners -->
-  <div class="launchpad-category"><h3>Chain Scanners</h3></div>
+<div id="chain" class="launchpad-section">
+  <div class="launchpad-category">Chain Scanners</div>
   <div class="launchpad-button" onclick="window.open('https://etherscan.io/')">EtherScan</div>
   <div class="launchpad-button" onclick="window.open('https://arbiscan.io/')">ArbiScan</div>
   <div class="launchpad-button" onclick="window.open('https://bscscan.com/')">BscScan</div>
@@ -112,28 +124,20 @@
   <div class="launchpad-button" onclick="window.open('https://blockscan.com/')">Blockscan</div>
 </div>
 
-  <div id="news">
-  <!-- Crypto News -->
-  <div class="launchpad-category"><h3>Crypto News</h3></div>
+<div id="news" class="launchpad-section">
+  <div class="launchpad-category">Crypto News & Cal</div>
   <div class="launchpad-button" onclick="window.open('https://www.coindesk.com/')">CoinDesk</div>
   <div class="launchpad-button" onclick="window.open('https://cointelegraph.com/')">Cointelegraph</div>
   <div class="launchpad-button" onclick="window.open('https://cryptopanic.com/')">CryptoPanic</div>
+  <div class="launchpad-button" onclick="window.open('https://coinmarketcal.com/en/')">CoinMarketCal</div>
 </div>
 
-<div id="tt">
-  <!-- Task Tracker -->
-  <div class="launchpad-category"><h3>Task Tracker</h3></div>
+<div id="tt" class="launchpad-section">
+  <div class="launchpad-category">Task Tracker</div>
   <div class="launchpad-button" onclick="window.open('https://www.notion.so/ubaid2103/3PochLabs-d4a749ee982747f19c2a8500fce9f642')">3PochLabs</div>
   <div class="launchpad-button" onclick="window.open('https://www.notion.so/ubaid2103/LazyGames-ai-c3a8f878fccc499f9ab270b37cc280f8')">LazyGames.ai</div>
   <div class="launchpad-button" onclick="window.open('https://www.notion.so/ubaid2103/RadarBlock-xyz-6775b86d3b424e3689025cfae92929b0')">RadarBlock.xyz</div>
   <div class="launchpad-button" onclick="window.open('https://www.notion.so/ubaid2103/Personal-Stuff-c5223c39783b462a845b1930c0ff3c06')">Personal Stuff</div>
-</div>
-
-<div id="al">
-  <!-- Additional Links -->
-  <div class="launchpad-category"><h3>Additional Links</h3></div>
-  <div class="launchpad-button" onclick="window.open('https://twitter.com/i/lists/1690691920551460895')">Twitter List</div>
-  <div class="launchpad-button" onclick="window.open('https://coinmarketcal.com/en/')">CoinMarketCal</div>
 </div>
 
 </body>
